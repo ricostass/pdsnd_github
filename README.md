@@ -9,7 +9,9 @@ This project verifies that I understand basic git commands.
 
 ### Files used
 bikeshare_final.py
+chicago.csv
+new_york_city.csv
+washington.csv
 
 ### Credits
-It's all me baby. 
-
+It's all me baby.
