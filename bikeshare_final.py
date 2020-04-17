@@ -1,7 +1,9 @@
+# Importing
 import time
 import pandas as pd
 import numpy as np
 
+#Setting up directories etc.
 CITY_DATA = { 'chicago': 'chicago.csv',
               'new york city': 'new_york_city.csv',
               'washington': 'washington.csv' }
@@ -21,21 +23,21 @@ def get_filters():
     """
     print('Hello! Let\'s explore some US bikeshare data!')
     # TO DO: get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
-    
+
     while True:
         city = input("Would you like to see the data for: Chicago, New York City, Washington?\n>").lower()
         if city in cities:
             break
-        
- # TO DO: get user input for month (all, january, february, ... , june)        
- 
+
+ # TO DO: get user input for month (all, january, february, ... , june)
+
     while True:
         month = input("Would you like to see the data for: all, January, February, March, April, May, June\n>").lower()
         if month in months:
             break
 
     # TO DO: get user input for day of week (all, monday, tuesday, ... sunday)
-  
+
     while True:
         day = input("Would you like to see the data for: all, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday\n>").lower()
         if day in days:
@@ -56,11 +58,13 @@ def load_data(city, month, day):
     Returns:
         df - Pandas DataFrame containing city data filtered by month and day
     """
+
+# Converting Data
     df = pd.read_csv(CITY_DATA[city])
 
-    df['Start Time'] = pd.to_datetime(df['Start Time']) 
+    df['Start Time'] = pd.to_datetime(df['Start Time'])
     df['End Time'] = pd.to_datetime(df['End Time'])
-  
+
     df['month'] = df['Start Time'].dt.month
     df['day_of_week'] = df['Start Time'].dt.weekday_name
     df['hour'] = df['Start Time'].dt.hour
@@ -68,11 +72,11 @@ def load_data(city, month, day):
     if month != 'all':
         month = months.index(month) + 1
         df = df[df['month'] == month]
-    
-        
+
+
     if day != 'all':
         df = df[df['day_of_week'] == day.title()]
-    print(df)    
+    print(df)
     return df
 
 
@@ -131,7 +135,7 @@ def trip_duration_stats(df):
     # TO DO: display mean travel time
     mean_travel_time = df['Trip Duration'].mean()
     print('Mean Travel Time in seconds:', mean_travel_time)
-    
+
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
@@ -143,7 +147,7 @@ def user_stats(df):
     start_time = time.time()
 
     # TO DO: Display counts of user types
-    
+
     user_count = df['User Type'].value_counts()
     print('Count of user types:', user_count)
 
@@ -152,7 +156,7 @@ def user_stats(df):
     if cid == True:
         gender_count = df['Gender'].value_counts()
         print('Count of gender:', gender_count)
-    
+
     # TO DO: Display earliest, most recent, and most common year of birth
     cid = "Birth Year" in df
     if cid == True:
@@ -174,6 +178,7 @@ def display_raw_data(df):
     """
     data = 0
 
+#Display 5 rows of raw data
     while True:
         answer = input('Would you like to see 5 lines of raw data? Enter yes or no: ')
         if answer.lower() == 'yes':
@@ -182,7 +187,7 @@ def display_raw_data(df):
 
         else:
             break
-    
+
 def main():
     while True:
         city, month, day = get_filters()
