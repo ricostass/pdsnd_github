@@ -13,14 +13,14 @@ months = ["january", "february", "march", "april", "may", "june", "all"]
 days = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday", "all"]
 
 def get_filters():
-    """
-    Asks user to specify a city, month, and day to analyze.
 
-    Returns:
-        (str) city - name of the city to analyze
-        (str) month - name of the month to filter by, or "all" to apply no month filter
-        (str) day - name of the day of week to filter by, or "all" to apply no day filter
-    """
+    #Asks user to specify a city, month, and day to analyze.
+
+    #Returns:
+    #    (str) city - name of the city to analyze
+    #    (str) month - name of the month to filter by, or "all" to apply no month filter
+    #    (str) day - name of the day of week to filter by, or "all" to apply no day filter
+
     print('Hello! Let\'s explore some US bikeshare data!')
     # TO DO: get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
 
@@ -48,18 +48,16 @@ def get_filters():
 
 
 def load_data(city, month, day):
-    """
-    Loads data for the specified city and filters by month and day if applicable.
 
-    Args:
-        (str) city - name of the city to analyze
-        (str) month - name of the month to filter by, or "all" to apply no month filter
-        (str) day - name of the day of week to filter by, or "all" to apply no day filter
-    Returns:
-        df - Pandas DataFrame containing city data filtered by month and day
-    """
+    #Loads data for the specified city and filters by month and day if applicable.
 
-# Converting Data
+    #Args:
+    #    (str) city - name of the city to analyze
+    #    (str) month - name of the month to filter by, or "all" to apply no month filter
+    #    (str) day - name of the day of week to filter by, or "all" to apply no day filter
+    #Returns:
+    #    df - Pandas DataFrame containing city data filtered by month and day
+
     df = pd.read_csv(CITY_DATA[city])
 
     df['Start Time'] = pd.to_datetime(df['Start Time'])
@@ -81,7 +79,7 @@ def load_data(city, month, day):
 
 
 def time_stats(df):
-    """Displays statistics on the most frequent times of travel."""
+    #Displays statistics on the most frequent times of travel.
 
     print('\nCalculating The Most Frequent Times of Travel...\n')
     start_time = time.time()
@@ -101,7 +99,7 @@ def time_stats(df):
 
 
 def station_stats(df):
-    """Displays statistics on the most popular stations and trip."""
+    #Displays statistics on the most popular stations and trip.
 
     print('\nCalculating The Most Popular Stations and Trip...\n')
     start_time = time.time()
@@ -123,25 +121,25 @@ def station_stats(df):
 
 
 def trip_duration_stats(df):
-    """Displays statistics on the total and average trip duration."""
+    #Displays statistics on the total and average trip duration.
 
     print('\nCalculating Trip Duration...\n')
     start_time = time.time()
 
     # TO DO: display total travel time
-    total_travel_time = df['Trip Duration'].sum()
-    print('Total Travel Time in seconds:', total_travel_time)
+    total_tt = df['Trip Duration'].sum()
+    print('Total Travel Time in seconds:', total_tt)
 
     # TO DO: display mean travel time
-    mean_travel_time = df['Trip Duration'].mean()
-    print('Mean Travel Time in seconds:', mean_travel_time)
+    mean_tt = df['Trip Duration'].mean()
+    print('Mean Travel Time in seconds:', mean_tt)
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
 
 def user_stats(df):
-    """Displays statistics on bikeshare users."""
+    #Displays statistics on bikeshare users.
 
     print('\nCalculating User Stats...\n')
     start_time = time.time()
@@ -152,14 +150,14 @@ def user_stats(df):
     print('Count of user types:', user_count)
 
     # TO DO: Display counts of gender
-    cid = "Gender" in df
-    if cid == True:
+    check1 = "Gender" in df
+    if check1 == True:
         gender_count = df['Gender'].value_counts()
         print('Count of gender:', gender_count)
 
     # TO DO: Display earliest, most recent, and most common year of birth
-    cid = "Birth Year" in df
-    if cid == True:
+    check2 = "Birth Year" in df
+    if check2 == True:
         earliest_yob = df['Birth Year'].min()
         print('Earliest year of birth:', earliest_yob)
         most_recent_yob = df['Birth Year'].max()
@@ -171,11 +169,10 @@ def user_stats(df):
     print('-'*40)
 
 def display_raw_data(df):
-    """
-    Asks user if they want to see 5 lines of raw data.
-    Returns the 5 lines of raw data if user inputs `yes`. Iterate until user response with a `no`
 
-    """
+    #Asks user if they want to see 5 lines of raw data.
+    #Returns the 5 lines of raw data if user inputs `yes`. Iterate until user response with a `no`
+
     data = 0
 
 #Display 5 rows of raw data
