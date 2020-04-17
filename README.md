@@ -1,15 +1,15 @@
 ### Date created
-Include the date you created this project and README file.
+17.04.20
 
 ### Project Title
-Replace the Project Title
+Final Git Project
 
 ### Description
-Describe what your project is about and what it does
+This project verifies that I understand basic git commands.
 
 ### Files used
-Include the files used
+bikeshare_final.py
 
 ### Credits
-It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.
+It's all me baby. 
 
